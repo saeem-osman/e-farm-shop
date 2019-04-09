@@ -1,0 +1,68 @@
+#nav{
+    background-color: #FF7A00;
+}
+
+
+.navbar-brand{
+    font-weight: bold;
+}
+
+#logo{
+    color: white;
+    font-size: 25px;
+    font-family: Arial;
+}
+
+#link{
+    color: white;
+    font-family: Arial;   
+}
+body{
+    background-image: url("../img/101.jpg");
+    background-position: center;
+  background-size: cover;
+}
+#main{
+   position: relative;
+    top: 40px;
+    left:870px;
+    width: 270px;
+    height: 450px;
+}
+#main1{
+    position: relative;
+    width: 250px;
+    height: 450px;
+    background-color: white;
+    margin-bottom: 10px;
+}
+
+
+input,select{
+    margin-left: 40px;
+    margin-bottom: 10px;
+}
+button{
+    background-color: #FF7A00;
+    border-radius: 20%;
+    margin-top: 10px;
+    margin-left: 40px;
+    padding-left: 30px;
+    padding-right: 30px; 
+    padding-bottom: 5px;
+    padding-top: 5px;
+    cursor: pointer;
+    
+}
+
+footer {
+      color: black;
+      padding: 15px;
+      
+    }
+
+    @media screen and (max-width: 480px) {
+      #main {
+          left: 0px;
+      } 
+    }

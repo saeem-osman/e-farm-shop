@@ -1,0 +1,46 @@
+#nav{
+    background-color: #FF7A00;
+}
+
+.navbar-brand{
+    font-weight: bold;
+}
+
+#logo{
+    color: white;
+    font-size: 25px;
+    font-family: Arial;
+}
+
+#link{
+    color: white;
+    font-family: Arial;
+}
+
+th{
+    background-color: darkgray;
+}
+.pay{
+    background-color: #4CAF50;
+    border: none;
+    color: white;
+    padding: 15px 25px;
+    text-align: center;
+    font-size: 12px;
+    cursor: pointer;
+}
+
+
+.pay:hover{
+    background: green;
+}
+
+footer {
+      color: black;
+      padding: 15px;
+      
+    }
+
+    @media screen and (max-width: 480px) {
+       
+    }
