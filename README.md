@@ -37,3 +37,19 @@ and 12345 as a password.
 
 You can contribute to add more features and reporting bugs in this project.
 
+#screenshots
+
+<h3>Main Page </h3>
+<img src="/screenshot/img1.png">
+<hr />
+<h3>Seller Page </h3>
+<img src="/screenshot/img3.png">
+<br />
+<img src="/screenshot/img2.png">
+<hr />
+<h3>Buyer Page </h3>
+<img src="/screenshot/img4.png">
+<br />
+<img src="/screenshot/img5.png">
+<br />
+<img src="/screenshot/img6.png">

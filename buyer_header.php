@@ -24,7 +24,7 @@
       <li><a href="editbuyer.php" id="link">Edit Profile</a></li>
       <li><a href="buyer_order.php" id="link">My Orders</a></li>
       <li><a href="store.php" id="link">Store</a></li>
-      <li><a href="#"  class="dropdown-toggle" data-toggle="dropdown" id="cart_container"><span class="glyphicon glyphicon-shopping-cart" style: "background-color: white"></span><i style="color: white;">Cart</i><span class="badge" style="color: off-white; background-color: #FF4500">0</span></a>
+      <li><a href="#"  class="dropdown-toggle" data-toggle="dropdown" id="cart_container"><span class="glyphicon glyphicon-shopping-cart" style: "background-color: white"></span><i style="color: white;">Cart</i><span class="badge" style="color: off-white; background-color: #FF4500">5</span></a>
         <div class="dropdown-menu" style="width: 450px">
           <div class="panel panel-success">
 
