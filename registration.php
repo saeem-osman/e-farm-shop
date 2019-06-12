@@ -40,6 +40,7 @@ include_once('header.php');
             <option value="">Register as a</option>
             <option value="seller"> Seller </option>
             <option value="buyer"> Buyer </option>
+             <option value="admin"> Buyer </option>
         </select>
     
     <br>

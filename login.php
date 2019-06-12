@@ -1,7 +1,16 @@
+<?php include('functions.php');
+  
+  if(isLoggedIn()){
+    header('location: index.php');
+  }
+
+
+?>
+
 <?php
 include_once('header.php');
 ?>
-<?php include('functions.php') ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -25,8 +34,7 @@ include_once('header.php');
         <p style="text-align: center; color: #95989A; font-size: 10px; padding-left: 40px; padding-right: 40px;">Sign up to buy/sell fresh products 
     with no middle men involved.</p>
         
-        <a href="https://www.facebook.com"><img src="img/fb.png" width="200px" height="35px" style="margin-left: 25px; margin-bottom: 10px;" /></a> 
-        <p style="text-align: center;"> --------------------or-------------------</p>
+        
       <form method="post" action="login.php">
       <?php echo display_error(); ?>
   
@@ -38,11 +46,12 @@ include_once('header.php');
     
   
 </form>
-      </div>
-      <div id="main2">
-        <p style="text-align: center;padding-top: 5px;">Don't have any account? Register now.<a href="registration.php">Register</a></p>
+        <div id="main2">
+        <p style="text-align: center;padding-top: 15px;">Don't have any account? Register now.<a href="registration.php">Register</a></p>
  
       </div>
+      </div>
+      
 </div>
 </div>
 </body>

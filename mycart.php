@@ -2,7 +2,7 @@
 <?php session_start(); ?>
 <?php
 if(isset($_POST["get_cart_product"])){
-	$id = $_SESSION['user']['id'];
+	$id = $_SESSION['user_id'];
 	$sql = "SELECT * FROM cart WHERE user_id = '$id'";
 	$run_query = mysqli_query($db,$sql);
 	$count = mysqli_num_rows($run_query);

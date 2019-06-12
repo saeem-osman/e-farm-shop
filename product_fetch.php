@@ -40,7 +40,7 @@ if(mysqli_num_rows($result) > 0)
 		$pro_district = $row['district'];
 		$pro_image = $row['path'];
 		echo "
-			<div class='col-sm-4' id='prod1' >
+			<div class='col-sm-4 products-item' id='prod1' >
            <img src='".$pro_image."'style='width:180px; height:130px'/>
            <p style='font-size: 14px;'><b>$pro_name</b></p>
            <p style='font-size: 14px;'> <b>Category:</b>.$pro_category</p>
@@ -55,8 +55,9 @@ if(mysqli_num_rows($result) > 0)
            <p style='font-size: 14px;'> <b>Seller Name:</b>.$pro_seller</p>
            <p style='font-size: 14px;'> <b>Min Order: </b>.$pro_minq</p>
 
-           <button pid='$prod_id'  class='btn btn-danger'  type='button' id='product'><b>AddtoCart</b></button>
+           <button pid='$prod_id'  class='btn btn-primary'  type='button' id='product'><b>AddtoCart</b></button>
               </div>";
+
 
 }}
 else
@@ -67,7 +68,7 @@ else
 <?php
 if(isset($_POST["addtoCart"])){
 	$p_id = $_POST["prodId"];
-	$user_id = $_SESSION["user"]["id"];
+	$user_id = $_SESSION["user_id"];
 	$sql = "SELECT * FROM cart WHERE p_id = '$p_id' AND user_id = '$user_id'";
 	$run_query = mysqli_query($db,$sql);
 	$count = mysqli_num_rows($run_query);

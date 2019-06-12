@@ -30,8 +30,8 @@
         <div id="cart_checkout"></div>
         <?php
         
-        $user = $_SESSION['user']['id'];
-
+        $user = $_SESSION['user_id'];
+          global $db;
         	$query = "SELECT * FROM cart WHERE user_id=$user";
 
 
@@ -65,11 +65,11 @@ echo "
   }
   }
   if(isset($_GET["delete"])){
-    $db = mysqli_connect('localhost', 'root', '', 'multi-login');
+    global $db;
     
     $the_delete_id = $_GET["delete"];
     
-    $user = $_SESSION['user']['id'];
+    $user = $_SESSION['user_id'];
     $sql = "DELETE FROM cart WHERE o_id='$the_delete_id' ";
     $run_query = mysqli_query($db, $sql);
     if($run_query){
@@ -86,7 +86,7 @@ echo "
 
     <?php
     if(isset($_POST['submit'])){
-      $user = $_SESSION['user']['id'];
+      $user = $_SESSION['user_id'];
       $query = "INSERT INTO purchase (`o_id`,`buyer_id`,`total_price`, `buyer_address`) "
               ."SELECT c.o_id, c.user_id,c.total_amt, u.address FROM cart c, users u WHERE c.user_id = '$user' "
               ."AND u.id = '$user' ";

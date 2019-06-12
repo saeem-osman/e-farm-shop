@@ -14,15 +14,13 @@
     <div class="col-sm-3" style="margin-left: 30px;">
 
       <?php
-      $user = $_SESSION['user']['id'];
+      $user = $_SESSION['user_id'];
 
 
 $sql = "SELECT * FROM users WHERE id = '$user'";
 $result = mysqli_query($db, $sql) or die(mysqli_error($db));
 if ($result && $result->num_rows > 0) {
     $rws = mysqli_fetch_array($result);
-
-
 ?>
 
 
@@ -116,8 +114,6 @@ if ($result && $result->num_rows > 0) {
           </div>
         </div>
       </div>
-
-
     <footer class="container-fluid text-center" style="margin-top: 235px;">
   <p>© 2018 CONNECT</p>
 </footer>

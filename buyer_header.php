@@ -2,12 +2,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <title>Bootstrap Example</title>
+  <title>e-farm</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="css/bootstrap.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <link rel="stylesheet" href="css/css3.css">
+    <link rel="stylesheet" type="text/css" href="css/products.css">
 
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.js"></script>
@@ -17,7 +18,7 @@
 <nav class="navbar navbar-default">
   <div class="container-fluid" id ="nav">
     <div class="navbar-header">
-      <a class="navbar-brand" id="logo" href="buyerhome.html">Connect</a>
+      <a class="navbar-brand" id="logo" href="index.php">Connect</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
       <li><a href="buyer_home.php" id="link">Home</a></li>

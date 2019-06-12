@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title></title>
-    </head>
-    <body>
-        <?php
-        // put your code here
-        ?>
-    </body>
-</html>
+<?php
+
+	include('functions.php');
+
+	if(!isLoggedIn()){
+		$_SESSION['msg'] = "You must logged in first";
+		header('location: login.php');
+	}
+	else if(isLoggedIn() && isSeller($_SESSION['user'])){
+		header('location: seller_home.php');
+	}else if(isLoggedIn() && isBuyer($_SESSION['user'])){
+		header('location: buyer_home.php');
+	}else if(isLoggedIn() && isAdmin($_SESSION['user'])){
+		header('location: admin_home.php');
+	}
+?>

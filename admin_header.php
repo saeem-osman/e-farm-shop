@@ -19,13 +19,13 @@
     	<nav class="navbar navbar-default">
   <div class="container-fluid" id ="nav">
     <div class="navbar-header">
-      <a class="navbar-brand" id="logo" href="home.html">Connect</a>
+      <a class="navbar-brand" id="logo" href="index.php">Connect</a>
     </div>
     <ul class="nav navbar-nav navbar-right">
-      <li class="active" id="link"><a href="home.html">Home</a></li>
-      <li><a href="about.html" id="link">About Us</a></li>
+      <li class="active" id="link"><a href="index.php">Home</a></li>
+      <li><a href="#" id="link">About Us</a></li>
 
-      <li><a href="support.html" id="link">Support</a></li>
+      <li><a href="#" id="link">Support</a></li>
       <li><a href="#" id="link">
               <img src="img/Capture.png" width="17px" height="21px" />
                   বাংলা</a></li>

@@ -11,10 +11,10 @@ include_once('functions.php');
     <div class="col-sm-3" style="margin-left: 30px;">
 
       <?php
-      $user = $_SESSION['user']['id'];
-      $db = mysqli_connect('localhost', 'root', '', 'multi-login');
+      global $db;
+      $user = $_SESSION['username'];
 
-$sql = "SELECT * FROM users WHERE id = '$user'";
+$sql = "SELECT * FROM users WHERE username = '$user'";
 $result = mysqli_query($db, $sql) or die(mysqli_error($db));
 if ($result && $result->num_rows > 0) {
     $rws = mysqli_fetch_array($result);

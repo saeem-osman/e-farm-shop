@@ -1,10 +1,10 @@
 <?php
   include('functions.php');
-
   if (!isLoggedIn()) {
     $_SESSION['msg'] = "You must log in first";
     header('location: login.php');
   }
+  ob_start();
 ?>
 <?php include_once('seller_header.php'); ?>
 <?php include_once('connection.php'); ?>
@@ -16,18 +16,18 @@
       <hr>
 
          <?php
-      $user = $_SESSION['user']['id'];
+      $user = $_SESSION['user_id'];
+      global $db;
 
-
-    $sql = "SELECT products.pname, products.pcategoryid, products.avaiquantity, products.minquantity, products.pprice, products.path, users.username, users.district FROM users,products WHERE users.id = products.userid AND id ='$user'";
+    $sql = "SELECT products.pid, products.pname, products.pcategoryid, products.avaiquantity, products.minquantity, products.pprice, products.path, users.username, users.district FROM users,products WHERE users.id = products.userid AND id ='$user'";
 $result = mysqli_query($db, $sql) or die(mysqli_error($db));
 if ($result && $result->num_rows > 0) {
     while($rws = mysqli_fetch_array($result)){
-
+          $prod_id = $rws['pid'];
 
 ?>
 
-              <div class="col-sm-4" id="prod1" >
+              <div class="col-sm-4 products-item" id="prod1" >
                             <a href="#">
              <?php echo "<img src='".$rws['path']."'width='160' height='110' />"; ?>
                         </a>
@@ -35,6 +35,8 @@ if ($result && $result->num_rows > 0) {
                   <p style="font-size: 14px;"> <b>Category id:</b><?php echo $rws['pcategoryid']; ?></p>
                   <p style="font-size: 14px;"><b>Available Quantity:</b><?php echo $rws['avaiquantity']; ?></p>
                   <p style="font-size: 14px;"> <b>Per KG Price:</b><?php echo $rws['pprice']; ?> Taka</p>
+                  <?php echo "
+                  <a href='my_products.php?delete={$prod_id}' class='btn btn-danger'><strong>Delete</strong></a> "; ?>
               </div>
 
            <?php }
@@ -74,7 +76,7 @@ if ($result && $result->num_rows > 0) {
            <input class="form-control" name="price" placeholder="price" type="number"
                   required> <br>
             <label for="image"><b>Upload Image</b></label>
-            <input class="form-control" name="image"  type="file"
+            <input class="form-control" name="image" id="fileToUpload"  type="file"
                          required> <br>
 
 
@@ -94,46 +96,149 @@ if ($result && $result->num_rows > 0) {
 </footer>
 </body>
 </html>
+<?php
+  if(isset($_GET['delete'])){
+    global $db;
+    $product_id = $_GET['delete'];
+      $query = "DELETE FROM products WHERE pid='$product_id' ";
+      $result = mysqli_query($db,$query);
+      if(!$result){
+        die("mysqli error" . mysqli_error());
+      }else{
+      header("Location: my_products.php");
+      ob_enf_fluch();
+      }
+  }
+
+?>
+
+<?php
+  if(isset($_POST['submit'])){
+    switch ($_FILES['image']["error"]) {
+        case UPLOAD_ERR_OK:
+          # code...
+        $target = "img/";
+        $target .= basename($_FILES['image']['name']);
+        $uploadOk;
+        if(move_uploaded_file($_FILES['image']['tmp_name'], $target)){
+          $status = "The file" . basename($_FILES['image']['name']) . " has been uploaded";
+          $imageFileType = pathinfo($target, PATHINFO_EXTENSION);
+          $check = getimagesize($target);
+          if($check !== false){
+            //echo "File is an image - " .$check["mime"] ."<br>";
+            $uploadOk = 1;
+          }else{
+            //echo "File is not an image <br>";
+            $uploadOk = 0;
+          }
+        }else{
+          $status = "Sorry there was a problem uploading your file";
+        }
+          break;
+        default:
+          echo "<script>alert('kicchu hoy nai bai')</alert>";
+      }
+
+      //uploading to database
+      $user = $_SESSION['user_id'];
+      $name = $_POST['name'];
+      $avquantity = $_POST['avquantity'];
+      $minquantity = $_POST['minquantity'];
+      $category = $_POST['category'];
+      if($category=='Fruit')
+      $categoryid = 3;
+    if($category=='Vegetable')
+      $categoryid = 2;
+    if($category=='Spice')
+      $categoryid = 4;
+    $price = $_POST['price'];
+
+    $sql_query = "INSERT INTO products VALUES ('$user', DEFAULT, '$name', '$categoryid', '$avquantity', '$minquantity', '$price', '$target')";
+    $result = mysqli_query($db, $sql_query);
+    if(!$result){
+      echo "<script>alert('There was an error uploading imaage.')</script>";
+    }else{
+      echo "<script>alert('Upload successfull.')</script>";
+      header('location: my_products.php');
+    }
+
+    }
+?>
+
+
+<!--     $user = $_SESSION['user_id'];
+    $name = $_POST['name'];
+    $avquantity = $_POST['avquantity'];
+    $minquantity = $_POST['minquantity'];
+    $category = $_POST['category'];
+    if($category=='Fruit')
+      $categoryid = 3;
+    if($category=='Vegetable')
+      $categoryid = 2;
+    if($category=='Spice')
+      $categoryid = 4;
+
+    $price = $_POST['price'];
+
+    $sql_query = "INSERT INTO products VALUES ('$user',DEFAULT,'$name','$categoryid','$avquantity','$minquantity','$price','$target')";
+
+    $result = mysqli_query($db, $sql_query);
+    if(!$result){
+      echo "<script> alert('There was error uploading') </script>";
+    }else{
+      echo "<script>alert('Uploaded')</script>";
+    }
+
+  }else{
+    echo "<script>alert('error')</script";
+
+  }
+  } -->
+
+
+
 
 <?php
 
 
 
-if (isset($_POST['submit'])) {
-                 $user = $_SESSION['user']['id'];
-                $name = $_POST['name'];
-		$avquantity = $_POST['avquantity'];
-                $minquantity = $_POST['minquantity'];
-		$category = $_POST['category'];
-		if($category=='Fruit')
-			$categoryid = 3;
-		if($category=='Vegetable')
-			$categoryid = 2;
-		if($category=='Spice')
-			$categoryid = 4;
+// if (isset($_POST['submit'])) {
+//      $user = $_SESSION['user_id'];
+//     $name = $_POST['name'];
+// 		$avquantity = $_POST['avquantity'];
+//     $minquantity = $_POST['minquantity'];
+// 		$category = $_POST['category'];
+// 		if($category=='Fruit')
+// 			$categoryid = 3;
+// 		if($category=='Vegetable')
+// 			$categoryid = 2;
+// 		if($category=='Spice')
+// 			$categoryid = 4;
 
-		$price = $_POST['price'];
+// 		$price = $_POST['price'];
                
      
 
-    // checking if the file is submitted
+//     // checking if the file is submitted
      
 
    
-            $target_dir = "img/";
-            $path = $target_dir . basename($_FILES["image"]["name"]);
+//             $target_dir = "img/";
+//             $path = $target_dir . basename($_FILES["image"]["name"]);
                 
      
             
                 
-    $sql_query = "INSERT INTO products VALUES ('$user',DEFAULT,'$name','$categoryid','$avquantity','$minquantity','$price','$path')";
+//     $sql_query = "INSERT INTO products VALUES ('$user',DEFAULT,'$name','$categoryid','$avquantity','$minquantity','$price','$path')";
 
  
 
 
-    if (mysqli_query($db, $sql_query)) {
-        echo "<script>alert('Uploaded')</script>";
+//     if (mysqli_query($db, $sql_query)) {
+//         echo "<script>alert('Uploaded')</script>";
      
-    } 
-}
+//     } 
+// }
+
+
 ?>
