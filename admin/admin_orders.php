@@ -1,16 +1,13 @@
 
 <?php
-  include('functions.php');
+  include('../functions.php');
 
-  if (!isLoggedIn()) {
+  if (!isLoggedIn() || !isAdmin($_SESSION['user'])) {
     $_SESSION['msg'] = "You must log in first";
-    header('location: login.php');
+    header('location: ../login.php');
   }
 ?>
 <?php include_once('admin_header.php'); ?>
-
-
-
                 <div class="orders">
 
                 <div class="order-list">
@@ -55,7 +52,7 @@
   <input type="checkbox">
   <span class="checkmark"></span>
 </label></td>
-              <td><button onclick="window.location.href='submit.html'">Submit</button> <button>Detail</button></td>
+              <td><button onclick="window.location.href='#'">Submit</button> <button>Detail</button></td>
 
 
                 </tr>
@@ -149,26 +146,5 @@
 
                 </div>
             </div>
-
-
-
-
-
-
-
-        <!-- jQuery CDN -->
-         <script src="https://code.jquery.com/jquery.min.js"></script>
-         <!-- Bootstrap Js CDN -->
-         <script src="bootstrap.min.js"></script>
-
-         <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
-                     $(this).toggleClass('active');
-                 });
-             });
-         </script>
-
     </body>
 </html>

@@ -1,15 +1,6 @@
-<?php
-  include('functions.php');
 
-  if (!isLoggedIn()) {
-    $_SESSION['msg'] = "You must log in first";
-    header('location: login.php');
-  }
-?>
-<?php include_once('admin_header.php'); ?>
-
-         <div class="container-fluid"; style="text-align: center; font-family: sans-serif;font-size: 37px;">
-          <style type="text/css">
+<div class="container-fluid"; style="text-align: center; font-family: sans-serif;font-size: 37px;">
+  <style type="text/css">
     .typewriter h1 {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
   border-right: .15em solid orange; /* The typwriter cursor */
@@ -46,21 +37,6 @@
 </div>
 </div>
 </div>
-
-
-        <!-- jQuery CDN -->
-         <script src="js/jquery.min.js"></script>
-         <!-- Bootstrap Js CDN -->
-         <script src="js/bootstrap.min.js"></script>
-
-         <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
-                     $(this).toggleClass('active');
-                 });
-             });
-         </script>
 
     </body>
 </html>

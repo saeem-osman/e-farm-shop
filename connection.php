@@ -4,18 +4,18 @@
 	//for webhost 
 
 	// $dbhost = "localhost";
-	// $user = "id9865653_root";
-	// $password = "12345";
+	// $dbuser = "id9865653_root";
+	// $dbpassword = "12345";
 	// $dbname = "id9865653_localhost";
 	
 	//
 
 	$dbhost = "localhost";
-	$user = "root";
-	$password = "";
+	$dbuser = "root";
+	$dbpassword = "";
 	$dbname = "multi-login";
 
-    $db = mysqli_connect($dbhost, $user, $password, $dbname);
+    $db = mysqli_connect($dbhost, $dbuser, $dbpassword, $dbname);
     if(!$db){
 		die("connection failed" .mysqli_connect_error());
 	}

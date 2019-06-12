@@ -8,10 +8,10 @@
         <title>Admin Page</title>
 
          <!-- Bootstrap CSS CDN -->
-        <link rel="stylesheet" href="css/bootstrap.min.css">
-        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="../css/bootstrap.min.css">
+        <link rel="stylesheet" href="../css/font-awesome.min.css">
         <!-- Our Custom CSS -->
-        <link rel="stylesheet" href="css/style5.css">
+        <link rel="stylesheet" href="../css/style5.css">
     </head>
     <body>
 
@@ -90,11 +90,25 @@
 
                                 <li><a href="admin_profile.php">Admin Name</a></li>
                                 <li><a href="admin_profile.php">Profile</a></li>
-                                <li><a href="logout.php">Logout</a></li>
+                                <li><a href="../logout.php">Logout</a></li>
                             </ul>
                         </div>
                     </div>
 
                 </nav>
+
+                        <!-- jQuery CDN -->
+         <script src="../js/jquery.min.js"></script>
+         <!-- Bootstrap Js CDN -->
+         <script src="../js/bootstrap.min.js"></script>
+
+         <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                     $(this).toggleClass('active');
+                 });
+             });
+         </script>
 
                 

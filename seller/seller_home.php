@@ -1,13 +1,3 @@
-<?php
-  include('functions.php');
-
-  if (!isLoggedIn()) {
-    $_SESSION['msg'] = "You must log in first";
-    header('location: login.php');
-  }
-?>
-<?php include_once('seller_header.php'); ?>
-<?php include_once('connection.php'); ?>
 
 <div class="container-fluid">
   <div class="row content">
@@ -25,7 +15,7 @@ if ($result && $result->num_rows > 0) {
 
 
         <p style="font-size: 25px; margin-left: 20px;margin-top: 20px;">
-            <img src="img/pro.PNG" width="50" height="50">
+            <img src="../img/pro.PNG" width="50" height="50">
           <b><h1><?php echo $rws['username']; ?></h1></b></p>
       <hr>
       <p style="font-size: 15px; margin-left: 20px;">

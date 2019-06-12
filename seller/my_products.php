@@ -1,20 +1,18 @@
 <?php
-  include('functions.php');
-  if (!isLoggedIn()) {
+  include('../functions.php');
+
+  if (!isLoggedIn() || !isSeller($_SESSION['user'])) {
     $_SESSION['msg'] = "You must log in first";
-    header('location: login.php');
+    header('location: ../login.php');
   }
   ob_start();
 ?>
 <?php include_once('seller_header.php'); ?>
-<?php include_once('connection.php'); ?>
-
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-7" style="margin-left: 35px;">
         <h4 style="color: #FF7A00; font-size: 20px;"><b>My Products</b></h4>
       <hr>
-
          <?php
       $user = $_SESSION['user_id'];
       global $db;
@@ -29,7 +27,7 @@ if ($result && $result->num_rows > 0) {
 
               <div class="col-sm-4 products-item" id="prod1" >
                             <a href="#">
-             <?php echo "<img src='".$rws['path']."'width='160' height='110' />"; ?>
+             <?php echo "<img src='../".$rws['path']."'width='160' height='110' />"; ?>
                         </a>
               <p style="font-size: 14px;"> <b><?php echo $rws['pname']; ?></b></p>
                   <p style="font-size: 14px;"> <b>Category id:</b><?php echo $rws['pcategoryid']; ?></p>
@@ -152,8 +150,15 @@ if ($result && $result->num_rows > 0) {
     if($category=='Spice')
       $categoryid = 4;
     $price = $_POST['price'];
+    $first_query = "SELECT * FROM users WHERE id='$user' ";
+    $val = mysqli_query($db,$first_query);
+    if(!$val){
+      die("error" . mysqli_error());
+    }
+    $data = mysqli_fetch_assoc($val);
+    $address = $data['address'];
 
-    $sql_query = "INSERT INTO products VALUES ('$user', DEFAULT, '$name', '$categoryid', '$avquantity', '$minquantity', '$price', '$target')";
+    $sql_query = "INSERT INTO products VALUES ('$user', DEFAULT, '$name', '$categoryid', '$avquantity', '$minquantity', '$price', '$target', '$address')";
     $result = mysqli_query($db, $sql_query);
     if(!$result){
       echo "<script>alert('There was an error uploading imaage.')</script>";

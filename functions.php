@@ -3,8 +3,8 @@
 
 	// connect to database for webhost
 	// $dbhost = "localhost";
-	// $user = "id9865653_root";
-	// $password = "12345";
+	// $dbuser = "id9865653_root";
+	// $dbpassword = "12345";
 	// $dbname = "id9865653_localhost";
 	//
 	$dbhost = "localhost";

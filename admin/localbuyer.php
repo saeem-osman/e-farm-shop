@@ -1,14 +1,15 @@
 <?php
-  include('functions.php');
+  include('../functions.php');
 
-  if (!isLoggedIn()) {
+  if (!isLoggedIn() || !isAdmin($_SESSION['user'])) {
     $_SESSION['msg'] = "You must log in first";
-    header('location: login.php');
+    header('location: ../login.php');
   }
 ?>
 
 <?php include_once('admin_header.php'); ?>
-<?php include_once('connection.php'); ?>
+
+
 <?php
 
 global $db;
@@ -16,20 +17,16 @@ if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
 }
 
-$sql = "SELECT * FROM USERS WHERE USER_TYPE='SELLER' LIMIT 10";
+$sql = "SELECT * FROM USERS WHERE USER_TYPE='buyer'LIMIT 10";
 
 $result = mysqli_query($db, $sql) or die(mysqli_error($db));
 
 if ($result->num_rows > 0) {
     // output data of each row
 
-
-
-
-
               ?>  <section class="seller-info">
                   <div class="sellers">
-                    <p> Local Seller </p>
+                    <p> Local Buyers </p>
                   </div>
           <div class="tables-1">
            <table id="example" class="table table-striped table-bordered" cellspacing="0" width="100%">
@@ -72,32 +69,7 @@ if ($result->num_rows > 0) {
             <div>
 
             </div>
-
-
-
-
-
         </div>
-
-
-
-
-
-
-
-        <!-- jQuery CDN -->
-         <script src="jquery.min.js"></script>
-         <!-- Bootstrap Js CDN -->
-         <script src="bootstrap.min.js"></script>
-
-         <script type="text/javascript">
-             $(document).ready(function () {
-                 $('#sidebarCollapse').on('click', function () {
-                     $('#sidebar').toggleClass('active');
-                     $(this).toggleClass('active');
-                 });
-             });
-         </script>
 
     </body>
 </html>

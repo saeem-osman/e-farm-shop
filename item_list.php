@@ -85,10 +85,11 @@ echo "
     <div class="col-md-10"></div>
 
     <?php
+    global $db;
     if(isset($_POST['submit'])){
       $user = $_SESSION['user_id'];
-      $query = "INSERT INTO purchase (`o_id`,`buyer_id`,`total_price`, `buyer_address`) "
-              ."SELECT c.o_id, c.user_id,c.total_amt, u.address FROM cart c, users u WHERE c.user_id = '$user' "
+      $query = "INSERT INTO purchase (`o_id`,`buyer_id`,`seller_id`,`total_price`, `buyer_address`, `seller_address`) "
+              ."SELECT c.o_id, c.user_id, p.userid, c.total_amt, u.address, p.seller_address FROM products p, cart c, users u WHERE c.user_id = '$user' "
               ."AND u.id = '$user' ";
 
 

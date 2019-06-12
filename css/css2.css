@@ -18,9 +18,9 @@
     font-family: Arial;   
 }
 body{
-    background-image: url("../img/101.jpg");
-    background-position: center;
-  background-size: cover;
+background-image: url("../img/101.jpg");
+background-position: center;
+background-size: cover;
 }
 #main{
    position: relative;
