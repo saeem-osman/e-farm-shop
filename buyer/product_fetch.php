@@ -1,7 +1,4 @@
-<link rel="stylesheet" href="css/css5.css">
-<link rel="stylesheet" href="css/w3.css">
-
-<?php include_once('connection.php'); ?>
+<?php include_once('../connection.php'); ?>
 
 
 <?php session_start(); ?>
@@ -41,7 +38,7 @@ if(mysqli_num_rows($result) > 0)
 		$pro_image = $row['path'];
 		echo "
 			<div class='col-sm-4 products-item' id='prod1' >
-           <img src='".$pro_image."'style='width:180px; height:130px'/>
+           <img src='../".$pro_image."'style='width:180px; height:130px'/>
            <p style='font-size: 14px;'><b>$pro_name</b></p>
            <p style='font-size: 14px;'> <b>Category:</b>.$pro_category</p>
            <p style='font-size: 14px;'> <b>Available Quantity:</b>.$pro_avq</p>
@@ -120,24 +117,7 @@ $("body").delegate("#product","click",function(event) {
 });
 </script>
 <script>
-$("body").delegate("#cart_container","click",function(event){
 
-	event.preventDefault();
-
-
-	$.ajax({
-
- 		 url : "mycart.php",
- 		 method : "POST",
- 		 data : {get_cart_product: 1},
- 		 success : function(data){
-
- 			 $("#cart_product").html(data);
-
- 		 }
-	})
-
-});
 cart_checkout();
 function cart_checkout(){
 	$.ajax({

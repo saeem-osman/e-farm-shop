@@ -1,4 +1,4 @@
-<?php include_once('connection.php'); ?>
+<?php include_once('../connection.php'); ?>
 <?php session_start(); ?>
 <?php
 if(isset($_POST["get_cart_product"])){
@@ -22,7 +22,7 @@ if(isset($_POST["get_cart_product"])){
   			<div class='row'>
             <div class='col-md-3'>$no</div>
             <div class='col-md-3'>$pro_name</div>
-            <div class='col-md-3'><img src='$pro_image' width='60px'; height='50px'></div>
+            <div class='col-md-3'><img src='../$pro_image' width='60px'; height='50px'></div>
             <div class='col-md-3'>‎৳.$pro_price.00</div>
           </div>
 

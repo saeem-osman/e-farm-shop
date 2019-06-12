@@ -1,21 +1,12 @@
 <?php
-include_once('buyer_header.php');
-include_once('connection.php');
+  include('../functions.php');
+
+  if (!isLoggedIn() || !isBuyer($_SESSION['user'])) {
+    $_SESSION['msg'] = "You must log in first";
+    header('location: ../login.php');
+  }
 ?>
-<?php session_start(); ?>
-
-
-
-<!DOCTYPE html>
-
-<html lang="en">
-<head>
-
-  <link rel="stylesheet" href="css/css5.css">
-  <link rel="stylesheet" href="css/w3.css">
-  <script src="js/jquery.min.js"> </script>
-
-
+<?php include_once('buyer_header.php'); ?>
 </head>
 <body >
 

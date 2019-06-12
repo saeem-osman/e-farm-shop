@@ -1,9 +1,9 @@
-<?php 
-  include('functions.php');
+<?php
+  include('../functions.php');
 
-  if (!isLoggedIn()) {
+  if (!isLoggedIn() || !isBuyer($_SESSION['user'])) {
     $_SESSION['msg'] = "You must log in first";
-    header('location: login.php');
+    header('location: ../login.php');
   }
 ?>
 

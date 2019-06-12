@@ -278,7 +278,7 @@
 
 				mysqli_query($db, $query);
 
-				header('location: editseller.php');
+				header('location: index.php');
 		}
 	}
 	//edit district
@@ -303,7 +303,7 @@
 
 				mysqli_query($db, $query);
 
-				header('location: editseller.php');
+				header('location: index.php');
 		}
 	}
 	//edit phone
@@ -323,7 +323,7 @@
 
 				mysqli_query($db, $query);
 
-				header('location: editseller.php');
+				header('location: index.php');
 		}
 	}
 	//edit_email
@@ -343,7 +343,7 @@
 
 				mysqli_query($db, $query);
 
-				header('location: editseller.php');
+				header('location: index.php');
 		}
 	}
 	//edit password
@@ -374,7 +374,7 @@
 
 				mysqli_query($db, $query);
 
-				header('location: editseller.php');
+				header('location: index.php');
 		}
 	}
 	//product uploading

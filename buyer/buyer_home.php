@@ -1,20 +1,13 @@
 
-<?php
-include_once('functions.php');
-?>
-
-
-<?php include_once('buyer_header.php'); ?>
- 
 <div class="container-fluid">
   <div class="row content">
     <div class="col-sm-3" style="margin-left: 30px;">
 
       <?php
       global $db;
-      $user = $_SESSION['username'];
+      $user = $_SESSION['user_id'];
 
-$sql = "SELECT * FROM users WHERE username = '$user'";
+$sql = "SELECT * FROM users WHERE id = '$user'";
 $result = mysqli_query($db, $sql) or die(mysqli_error($db));
 if ($result && $result->num_rows > 0) {
     $rws = mysqli_fetch_array($result);
@@ -24,7 +17,7 @@ if ($result && $result->num_rows > 0) {
         
          
         <p style="font-size: 25px; margin-left: 20px;margin-top: 20px;"> 
-            <img src="img/pro.PNG" width="50" height="50">
+            <img src="../img/pro.PNG" width="50" height="50">
           <b><h1><?php echo $rws['username']; ?></h1></b></p>
       <hr>
       <p style="font-size: 15px; margin-left: 20px;">

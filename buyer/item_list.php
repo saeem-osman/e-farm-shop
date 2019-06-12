@@ -1,10 +1,12 @@
-
-<?php include_once('buyer_header.php'); ?>
-<?php include_once('connection.php'); 
+<?php
+  include('../functions.php');
+  ob_start();
+  if (!isLoggedIn() || !isBuyer($_SESSION['user'])) {
+    $_SESSION['msg'] = "You must log in first";
+    header('location: ../login.php');
+  }
 ?>
-<?php session_start(); ?>
-<?php ob_start() ?>
-
+<?php include_once('buyer_header.php'); ?>
 <p><br/></p>
 <p><br/></p>
 <p><br/></p>
@@ -55,7 +57,7 @@ echo "
               <a href='item_list.php?delete={$o_id}' class='btn btn-danger remove'><span class='glyphicon glyphicon-trash'></span></a>
               <a href='' update_id='$pro_id' class='btn btn-primary update'><span class='glyphicon glyphicon-ok-sign'></span></a>
             </div></div>
-        <div class='col-md-2'><img src='$pro_image' height=50px; width=60px;></div>
+        <div class='col-md-2'><img src='../$pro_image' height=50px; width=60px;></div>
       <div class='col-md-2'>$pro_name</div>
       <div class='col-md-2'><input type='text' class='form-control' value='$qty' disable></div>
       <div class='col-md-2'><input type='text' class='form-control' value='$pro_price' disabled></div>

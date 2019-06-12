@@ -9,7 +9,7 @@
 	else if(isLoggedIn() && isSeller($_SESSION['user'])){
 		header('location: seller/index.php');
 	}else if(isLoggedIn() && isBuyer($_SESSION['user'])){
-		header('location: buyer_home.php');
+		header('location: buyer/index.php');
 	}else if(isLoggedIn() && isAdmin($_SESSION['user'])){
 		header('location: admin/index.php');
 	}
