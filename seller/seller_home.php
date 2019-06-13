@@ -38,70 +38,83 @@ if ($result && $result->num_rows > 0) {
         <br><br>
     </div>
 
-      <div class="col-sm-8" style="margin-left: 30px;">
-        <h4 style="color: #FF7A00; font-size: 20px;"><b>Requests</b></h4>
+    <?php
+        global $db;
+        $seller_id = $_SESSION['user_id'];
+        $query = "SELECT * from purchase WHERE seller_id= '$seller_id'";
+        $result = mysqli_query($db,$query);
+        if($result && mysqli_num_rows($result) > 0){
+          echo "
+                  <div class='col-sm-8' style='margin-left: 30px;'>
+        <h4 style='color: #FF7A00; font-size: 20px;'><b>Requests</b></h4>
       <hr>
-      <table class="table table-striped table-bordered" >
+      <table class='table table-striped table-bordered' >
            <thead>
              <tr>
                  <th>Customer Name</th>
-               <th>District</th>
+               <th>Address</th>
                <th>Product</th>
                <th>Quantity</th>
                <th>Date</th>
                <th>Phone Number / Email</th>
                <th>Total</th>
-               <th colspan="2">Confirmation</th>
+               <th colspan='2'>Confirmation</th>
+               <th>Status</th>
 
              </tr>
            </thead>
-           <tbody>
+           <tbody> ";
+
+           while ($data = mysqli_fetch_assoc($result)) {
+            $buyer_id = $data['buyer_id'];
+            $product_id = $data['product_id'];
+            $product_qty = $data['product_qty'];
+            $purchase_date = $data['date'];
+            $total_price = $data['total_price'];
+            $status = $data['status'];
+
+            //finding customer info
+            $customer_data = mysqli_query($db, "SELECT * from users WHERE id='$buyer_id'");
+            if(!$customer_data) die("error ".mysqli_error());
+            $customer_info = mysqli_fetch_assoc($customer_data);
+            $customer_name = $customer_info['username'];
+            $customer_district = $customer_info['district'];
+            $customer_address = $customer_info['address'];
+            $customer_email = $customer_info['email'];
+            $customer_phone = $customer_info['phone'];
+            $customer_address = $customer_address ? $customer_address : $customer_district;
+            $customer_contact = $customer_phone ? $customer_phone : $customer_email;
+
+            //finding product item name
+            $product_data = mysqli_query($db, "SELECT pname from products WHERE pid='$product_id'");
+            if(!$product_data) die("error ".mysqli_error());
+            $product_info = mysqli_fetch_assoc($product_data);
+            $product_name = $product_info['pname'];
+
+           echo "
              <tr>
-               <td>John</td>
-               <td>Doe</td>
+               <td>$customer_name</td>
+               <td>$customer_address</td>
 
-               <td>Mary</td>
-               <td>Moe</td>
-               <td>Mary</td>
-               <td>Moe</td>
+               <td>$product_name</td>
+               <td>$product_qty</td>
+               <td>$purchase_date</td>
+               <td>$customer_contact</td>
 
-               <td>Mary</td>
-               <td><button>✔</button></td>
-               <td><button>❌</button></td>
-
-             </tr>
-             <tr>
-               <td>John</td>
-               <td>Doe</td>
-
-               <td>Mary</td>
-               <td>Moe</td>
-               <td>Mary</td>
-               <td>Moe</td>
-
-               <td>Mary</td>
-               <td><button>✔</button></td>
-               <td><button>❌</button></td>
-
-             </tr>
-             <tr>
-               <td>John</td>
-               <td>Doe</td>
-
-               <td>Mary</td>
-               <td>Moe</td>
-               <td>Mary</td>
-               <td>Moe</td>
-
-               <td>Mary</td>
-               <td><button>✔</button></td>
-               <td><button>❌</button></td>
-
-             </tr>
+               <td>$total_price</td>
+               <td><button disabled='true'>Accept</button></td>
+               <td><button disabled='true'>Decline</button></td>
+                <td>$status</td>
+             </tr> ";
+           } ?>
            </tbody>
          </table>
-
           </div>
+                <?php     
+        }
+    ?>
+
+
         </div>
       </div>
     <footer class="container-fluid text-center" style="margin-top: 235px;">

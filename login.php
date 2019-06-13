@@ -3,28 +3,12 @@
   if(isLoggedIn()){
     header('location: index.php');
   }
-
-
 ?>
-
 <?php
 include_once('header.php');
 ?>
 
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <title>Bootstrap Example</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="bootstrap.css">
-  <link rel="stylesheet" href="css1.css">
-  
-  <script src="jquery.js"></script>
-  <script src="bootstrap.js"></script>
-</head>
-<body>
 
   
 <div class="container">

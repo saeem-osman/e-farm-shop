@@ -17,7 +17,7 @@ if ($db->connect_error) {
     die("Connection failed: " . $db->connect_error);
 }
 
-$sql = "SELECT * FROM USERS WHERE USER_TYPE='buyer'LIMIT 10";
+$sql = "SELECT * FROM users WHERE user_type ='buyer'LIMIT 10";
 
 $result = mysqli_query($db, $sql) or die(mysqli_error($db));
 

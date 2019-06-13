@@ -82,16 +82,23 @@ if(isset($_POST["addtoCart"])){
 		$pro_image = $row["path"];
 		$pro_price = $row["pprice"];
 		$pro_quant = $row["minquantity"];
-		$sql = "INSERT INTO `cart` (`o_id`, `p_id`, `ip_add`, `user_id`, `produc_ttitle`,
+		$pro_seller_id = $row['userid'];
+		$pro_total_price = (int)$row['pprice'] * (int)$row['minquantity'];
+		$pro_total_price = (string)$pro_total_price;
+		$sql = "INSERT INTO `cart` (`o_id`, `p_id`, `ip_add`, `user_id`,`seller_id`,`produc_ttitle`,
 			 `product_image`, `qty`, `price`, `total_amt`)
-		 VALUES (NULL, '$p_id', '0', '$user_id', '$pro_name', '$pro_image', '$pro_quant', '$pro_price', '$pro_price');";
-		 if(mysqli_query($db,$sql)){
-			 echo "
+		 VALUES (NULL, '$id', '0', '$user_id','$pro_seller_id', '$pro_name', '$pro_image', '$pro_quant', '$pro_price', '$pro_total_price');";
+		 $result = mysqli_query($db,$sql);
+		if(!$result){
+			die("error " .mysqli_error($db));
+		 
+	}else{
+		echo "
 			 	<div class='alert alert-success'>
 				<a href='#' class='close' data-dismiss='alert' arial-label='close'>&times; </a>
 				<b>Product is added.! </b>
 				</div>";
-		 }
+		}
 	}
 }
 ?>

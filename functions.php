@@ -174,6 +174,7 @@
 			$db_user_type = $row['user_type'];
 			$db_user_password = $row['password'];
 			$db_username = $row['username'];
+			$db_user_address = $row['address'];
 		}
 		if(password_verify($password, $db_user_password)){
 				if ($db_user_type == 'admin') {
@@ -183,7 +184,8 @@
 					$_SESSION['username'] = $db_username;
 					$_SESSION['useremail'] = $db_user_email;
 					$_SESSION['success']  = "You are now logged in";
-					header('location: admin_home.php');
+					$_SESSION['user_address'] = $db_user_address;
+					header('location: index.php');
 				}
                 elseif ($db_user_type == 'seller') {
 
@@ -192,7 +194,8 @@
 					$_SESSION['success']  = "You are now logged in";
 					$_SESSION['username'] = $db_username;
 					$_SESSION['useremail'] = $db_user_email;
-					header('location: seller_home.php');
+					$_SESSION['user_address'] = $db_user_address;
+					header('location: index.php');
 				}
                 elseif($db_user_type == 'buyer') {
 					$_SESSION['user'] = $db_user_type;
@@ -200,7 +203,8 @@
 					$_SESSION['success']  = "You are now logged in";
 					$_SESSION['username'] = $db_username;
 					$_SESSION['useremail'] = $db_user_email;
-					header('location: buyer_home.php');
+					$_SESSION['user_address'] = $db_user_address;
+					header('location: index.php');
 				}
 		}
 		else{

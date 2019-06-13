@@ -118,7 +118,7 @@ if ($result && $result->num_rows > 0) {
         $target = "img/";
         $target .= basename($_FILES['image']['name']);
         $uploadOk;
-        if(move_uploaded_file($_FILES['image']['tmp_name'], $target)){
+        if(move_uploaded_file($_FILES['image']['tmp_name'],'../'. $target)){
           $status = "The file" . basename($_FILES['image']['name']) . " has been uploaded";
           $imageFileType = pathinfo($target, PATHINFO_EXTENSION);
           $check = getimagesize($target);
