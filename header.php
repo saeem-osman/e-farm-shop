@@ -4,14 +4,15 @@
   <title>e-farm</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+
   <link rel="stylesheet" href="css/bootstrap.css">
-  <link rel="stylesheet" href="css/css2.css">
-    <link rel="stylesheet" href="../css/css3.css">
+
+          <link rel="stylesheet" type="text/css" href="css/all.css">
+
   <script src="js/jquery.js"></script>
   <script src="js/bootstrap.js"></script>
 </head>
 <body>
-
 <nav class="navbar navbar-default">
   <div class="container-fluid" id ="nav">
     <div class="navbar-header">

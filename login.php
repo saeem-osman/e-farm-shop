@@ -1,42 +1,68 @@
+<?php
+include_once('header.php');
+?>
 <?php include('functions.php');
   
   if(isLoggedIn()){
     header('location: index.php');
   }
 ?>
-<?php
-include_once('header.php');
-?>
 
-
-
-  
 <div class="container">
-    <div class="col-sm-2 sidenav" id="main">
-        <div id="main1">
-        <p style="color:#FF7A00; font-weight: bold; font-size: 23px; text-align: center; padding-top: 15px;">Connect</p>
-        <p style="text-align: center; color: #95989A; font-size: 10px; padding-left: 40px; padding-right: 40px;">Sign up to buy/sell fresh products 
-    with no middle men involved.</p>
-        
-        
-      <form method="post" action="login.php">
-      <?php echo display_error(); ?>
-  
-    <input type="text" placeholder="Email or Phone Number" name="email" required>
-    <input type="password" placeholder="Password" name="password" required>
-    <br>
-    
-    <button type="submit" class="btn" name="login_btn" style="color: white;font-weight: bold;">Login</button>
-    
-  
-</form>
-        <div id="main2">
-        <p style="text-align: center;padding-top: 15px;">Don't have any account? Register now.<a href="registration.php">Register</a></p>
+  <div class="row">
+    <div class="col-md-7">
+
+    </div>
+    <div class="col-md-5">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="text-left">Login Form</h2>
+          </div>
+          <div class="col-md-6">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </div>
+        </div>
+          <hr />
+          
+            <form method="post" action="login.php">
+              <?php echo display_error(); ?>
+              <div class="row">
+                <label class="label col-md-2 control-label">E-Mail</label>
+                <div class="col-md-10">
+                  <input type="email" class="form-control" placeholder="Enter email" name="email" required>
+                </div>
+              </div>
+              <div class="row">
+                <label class="label col-md-2 control-label">Password</label>
+                <div class="col-md-10">
+                  <input type="password" class="form-control" placeholder="Enter password" name="password" required>
+                </div>
+              </div>
+                <button type="submit" class="btn btn-info" name="login_btn">Login</button> 
+
+              <div class="row">
+                <p class="lead text-center">
+                  Don't have any account? Register now.<br><a href="registration.php">
+                  <strong>Register Here</strong></a>
+                </p>
+              </div>
+              
+            </form>
+
  
       </div>
-      </div>
+          </div>
+        </div>
+    </div>
       
-</div>
+
+
+
+
+
+
+
+
 </div>
 </body>
 </html>

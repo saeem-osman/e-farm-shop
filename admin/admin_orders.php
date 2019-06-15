@@ -13,135 +13,119 @@
                 <div class="order-list">
                   <nav class="nav-sitenav">
                     <ul class="navigation">
-                     <li><a href="orders.html">All (5)</a></li>
-                        <li><a href="order1.html">Processing (1)</a></li>
-                        <li><a href="order2.html">Completed (2)</a></li>
-                          <li><a href="order3.html">Pending (1)</a></li>
-                            <li><a href="order4.html">Cancelled (1)</a></li>
+                     <li><a href="orders.html">All</a></li>
+                        <li><a href="order1.html">Processing</a></li>
+                        <li><a href="order2.html">Completed</a></li>
 
                     </ul>
                   </nav>
                 </div>
               </div>
+
+              <?php
+
+                  global $db;
+                  $query = "SELECT * FROM purchase WHERE status='accepted' ";
+                  $result = mysqli_query($db,$query);
+                  if(!$result) die('error '. mysqli_error());
+                  if(mysqli_num_rows($result)>0){
+
+
+
+                    ?>
+
               <div class="order-table">
 
                 <div class="table-responsive datagrid">
         <table class="table table-striped table-bordered table-hover">
             <thead>
                 <tr>
-                    <th>Status</th>
-                    <th>Order</th>
-                    <th>Ship to</th>
+                    <th>Purchase Id</th>
+                    <th>Item Name</th>
+                    <th>Sender</th>
+                    <th>Receiver</th>
                     <th>Date</th>
                     <th>Total</th>
-                    <th colspan="3">Action</th>
+                    <th colspan="4">Action</th>
                 </tr>
             </thead>
             <tbody>
-                <tr>
-                    <td>Pending</td>
-                    <td>#20 by Rahman Chowdhury</td>
-                    <td>130 new Elephant Road, Dhaka</td>
-                    <td>02-03-2018</td>
-                    <td>1500/= </td>
-                    <td><label class="cons">Product Recieved
-  <input type="checkbox">
-  <span class="checkmark"></span>
-</label></td>
-                    <td><label class="cons">Sent To Destination
-  <input type="checkbox">
-  <span class="checkmark"></span>
-</label></td>
-              <td><button onclick="window.location.href='#'">Submit</button> <button>Detail</button></td>
+              <?php
+                    while ($list = mysqli_fetch_assoc($result)) {
+                      $item_status = $list['status'];
+                      $item_date = $list['date'];
+                      $purchase_id = $list['pid'];
+                      $product_id = $list['product_id'];
+                      $buyer_id = $list['buyer_id'];
+                      $seller_id = $list['seller_id'];
+                      $product_qty = $list['product_qty'];
+                      $product_price = $list['total_price'];
+                      # code...
+
+                      //seller info
+                      $seller_info = mysqli_query($db, "SELECT * from users WHERE id='$seller_id'");
+                      if(!$seller_info) die('error '.mysqli_error());
+                      $seller_details = mysqli_fetch_assoc($seller_info);
+                      $seller_name = $seller_details['username'];
+                      $seller_address = $seller_details['address'];
+                      
+                      //buyer_info
+                      $buyer_info = mysqli_query($db, "SELECT * from users WHERE id='$buyer_id'");
+                      if(!$buyer_info) die('error '.mysqli_error());
+                      $buyer_details = mysqli_fetch_assoc($buyer_info);
+                      $buyer_name = $buyer_details['username'];
+                      $buyer_address = $buyer_details['address'];
+                      
+                      //product_name
+
+                      $product_info = mysqli_query($db, "SELECT pname from products WHERE pid='$product_id'");
+                      if(!$product_info) die('error '.mysqli_error());
+                      $product_details = mysqli_fetch_assoc($product_info);
+                      $product_name = $product_details['pname'];
 
 
-                </tr>
-                <tr>
-                    <td>Completed</td>
-                    <td>#30 by Alam Chowdhury</td>
-                    <td>160 new Market, Dhaka</td>
-                    <td>03-03-2018</td>
-                    <td>3500/= </td>
-                    <td><label class="cons">Product Recieved
-  <input type="checkbox" checked="unchecked">
-  <span class="checkmark"></span>
-</label></td>
-                    <td><label class="cons">Sent To Destination
-  <input type="checkbox" checked="unchecked">
-  <span class="checkmark"></span>
-</label></td>
-                <td><button>Detail</button></td>
+                      echo "
 
-                </tr>
-                <tr>
-                    <td>Cancelled</td>
-                    <td>#70 by Kamal Chowdhury</td>
-                    <td>Bashundhara R/A, Dhaka</td>
-                    <td>02-02-2018</td>
-                    <td>4000/= </td>
-                   <td><label class="cons">Product Recieved
-  <input type="checkbox" checked="checked">
-  <span class="checkmark"></span>
-</label></td>
-                    <td><label class="cons">Sent To Destination
-  <input type="checkbox" checked="checked">
-  <span class="checkmark"></span>
-</label></td>
-                <td><button>Detail</button></td>
+                        <tr>
+                            <td>$purchase_id</td>
+                            <td>$product_name</td>
+                            <td>$seller_name . from . $seller_address</td>
+                            <td>$buyer_name . from . $buyer_address </td>
+                            <td>$item_date </td>
+                            <td>$product_price</td>
 
-                </tr>
-                <tr>
-                    <td>Processing</td>
-                    <td>#30 by Alam Chowdhury</td>
-                    <td>160 new Market, Dhaka</td>
-                    <td>03-03-2018</td>
-                    <td>3500/= </td>
-                    <td><label class="cons">Product Recieved
-  <input type="checkbox" checked="checked">
-  <span class="checkmark"></span>
-</label></td>
-                    <td><label class="cons">Sent To Destination
-  <input type="checkbox" checked="checked">
-  <span class="checkmark"></span>
-</label></td>
-                    <td><button>Detail</button></td>
-                </tr>
+                            <td><label class='cons'>Product Recieved
+                                  <input type='checkbox'>
+                                  <span class='checkmark'></span>
+                                  </label></td>
+                            <td><label class='cons'>Sent To Destination
+                                  <input type='checkbox'>
+                                  <span class='checkmark'></span>
+                                  </label></td>
+                            <td><button>Submit</button></td>
+                            <td><button>Detail</button></td>
 
-                <td>Completed</td>
-                    <td>#30 by Alam Chowdhury</td>
-                    <td>160 new Market, Dhaka</td>
-                    <td>03-03-2018</td>
-                    <td>3500/= </td>
-                    <td><label class="cons">Product Recieved
-  <input type="checkbox" checked="checked">
-  <span class="checkmark"></span>
-</label></td>
-                    <td><label class="cons">Sent To Destination
-  <input type="checkbox" checked="checked">
-  <span class="checkmark"></span>
-</label></td>
-                    <td><button>Detail</button></td>
-                </tr>
+
+                      </tr>
+                
+
+                      ";
+
+                    }
+
+                    ?>
 
 
             </tbody>
-            <tfoot>
-                <tr>
-                    <td colspan="4">
-                        <div class="paging">
-                            <ul>
-                                <li><a href="#"> <span>Previous </span></a></li>
-                                <li><a href="#" class="active"> <span>1 </span></a></li>
-                                <li><a href="#"> <span>2 </span></a></li>
-                                <li><a href="#"> <span>3</span></a></li>
-                                <li><a href="#"> <span>Next </span></a></li>
-                            </ul>
-                        </div>
-                    </td>
-                </tr>
-            </tfoot>
+
         </table>
     </div>
+              <?php
+                  }
+
+               ?>
+
+
 
 
                 </div>

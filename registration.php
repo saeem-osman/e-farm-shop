@@ -1,55 +1,100 @@
 <?php
 include_once('header.php');
 ?>
-
-
 <?php include('functions.php') ?>
 
-
-
 <div class="container">
-    <div class="col-sm-2 sidenav" id="main">
-        <div id="main1">
-        <p style="color:#FF7A00; font-weight: bold; font-size: 23px; text-align: center; padding-top: 15px;">Connect</p>
-        <p style="text-align: center; color: #95989A; font-size: 10px; padding-left: 40px; padding-right: 40px;">Sign up to buy/sell fresh products 
-    with no middle men involved.</p>
-        
-        <a href="https://www.facebook.com"><img src="img/fb.png" width="200px" height="35px" style="margin-left: 25px; margin-bottom: 10px;" /></a> 
-        <p style="text-align: center;"> --------------------or-------------------</p>
-      <form method="post" action="registration.php">
-      
-      <?php echo display_error(); ?>
-      <input type="text" placeholder="Full Name" name="name" value ="<?php echo $username; ?>" required>
-  
-    <input type="text" placeholder="Email" name="email" value ="<?php echo $email; ?>" required>
-    
-    <input type="password" placeholder="Password" name="password_1" required>
-    <input type="password" placeholder="Confirm Password" name="password_2" required>
+  <div class="row">
+    <div class="col-md-7">
+
+    </div>
+    <div class="col-md-5">
+        <div class="row">
+          <div class="col-md-6">
+            <h2 class="text-left">Registration Form</h2>
+          </div>
+          <div class="col-md-6">
+            <span class="glyphicon glyphicon-pencil"></span>
+          </div>
+        </div>
+          <hr />
+          
+            <form method="post" action="registration.php">
+              <?php echo display_error(); ?>
+              <div class="row">
+                <label class="label col-md-2 control-label">Full Name</label>
+                <div class="col-md-10">
+                  <input type="text" class="form-control" placeholder="Enter name" name="name" value ="<?php echo $username; ?>" required>
+                </div>
+              </div>
+              <div class="row">
+                <label class="label col-md-2 control-label">Email</label>
+                <div class="col-md-10">
+                <input type="text" class="form-control" placeholder="Enter Email" name="email" value ="<?php echo $email; ?>" required>
+                </div>
+              </div>
+              <div class="row">
+                <label class="label col-md-2 control-label">Password</label>
+                <div class="col-md-10">
+                <input type="password" class="form-control" placeholder="Password" name="password_1" required>
+                </div>
+              </div>
+              <div class="row">
+                <label class="label col-md-2 control-label">Confirm</label>
+                <div class="col-md-10">
+                <input type="password" class="form-control" placeholder="Confirm Password" name="password_2" required>
+                </div>
+              </div>
+              <div class="row">
+                <label class="label col-md-2 control-label">District</label>
+                <div class="col-md-10">
+                <select name="district" class="form-control" required>
+                    <option value=""> - </option>
+                    <option value="dhaka">Dhaka</option>
+                    <option value="chittagong">Chittagong</option>
+                    <option value="rajshahi">Rajshahi</option>
+                    <option value="sylhet">Sylhet</option>
+                    <option value="khulna">Khulna</option>
+                    <option value="barisal">Barisal</option>
+                </select>
+                </div>
+              </div>
+              <div class="row">
+                <label class="label col-md-3 control-label">Register as </label>
+                <div class="col-md-9">
+                <select name="user_type" class="form-control" required>
+                    <option value=""> - </option>
+                    <option value="seller">seller</option>
+                    <option value="buyer">buyer</option>
+                    <option value="admin">Admin</option>
+                </select>
+                </div>
+              </div>
+              
+              <button type="submit" name="register_btn" class="btn btn-info">Register</button>
+
+              <div class="row">
+                <p class="lead text-center">
+                  Already have account? Login now.<br><a href="login.php">
+                  <strong>Login Here</strong></a>
+                </p>
+              </div>
+              
+            </form>
  
-        <select name="district" style="width: 160px; height: 28px;color: grey;" required>
-            <option value="">District Name</option>
-            <option value="dhaka">Dhaka</option>
-            <option value="chittagong">Chittagong</option>
-            <option value="rajshahi">Rajshahi</option>
-            <option value="sylhet">Sylhet</option>
-            <option value="khulna">Khulna</option>
-            <option value="barisal">Barisal</option>
-        </select>
-    
-    <select name="user_type" style="width: 160px; height: 28px;color: grey;" required>
-            <option value="">Register as a</option>
-            <option value="seller"> Seller </option>
-            <option value="buyer"> Buyer </option>
-             <option value="admin"> Buyer </option>
-        </select>
-    
-    <br>
-    <button type="submit" name="register_btn" class="btn">Register</button>
-    <p style="text-align: center; padding-top: 3px;">
-			Already a member? <a href="login.php">Sign in</a>
-		</p>
-  
-</form>
+      </div>
+          </div>
+        </div>
+    </div>
       
+
+
+
+
+
+
+
+
+
 </div>
 </div>

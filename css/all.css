@@ -1,0 +1,91 @@
+*{
+	margin: 0px;
+	padding: 0px;
+}
+body{
+background-image: url("../img/101.jpg");
+background-attachment: fixed;
+background-size: cover;
+}
+
+h2{
+	font-size: 25px;
+	color: #FF7A00;
+}
+
+#nav{
+    background-color: #FF7A00;
+}
+
+
+.navbar-brand{
+    font-weight: bold;
+}
+
+#logo{
+    color: white;
+    font-size: 25px;
+    font-family: Arial;
+}
+
+#link{
+    color: white;
+    font-family: Arial;   
+}
+
+
+.glyphicon-pencil{
+	font-size: 50px;
+	color: #FF7A00;
+	float: right;
+	margin-top: 10px;
+}
+
+hr{
+	display: block;
+	height: 1px;
+	border: 0;
+	border-top: 1px solid #FF7A00;
+}
+
+.col-md-5{
+	margin-top: 80px;
+	box-shadow: -1px 1px 60px 10px rgba(155, 89, 27, 0.582);
+	background: rgba(0,0,0,.6);
+}
+
+.label{
+	font-weight: normal;
+	margin-top: 15px;
+	color: white;
+	font-size: 19px;
+}
+
+.form-control{
+	background: transparent;
+	border-radius: 0px;
+	border: 0px;
+	border-bottom: 1px solid #FF7A00;
+	font-size: 18px;
+	margin-top: 15px;
+	height: 40px;
+	color: white;
+}
+
+.btn-info{
+	background-color: #FF7A00;
+	margin-top: 10px;
+	padding-top: 10px;
+}
+
+.text-center{
+	font-size: 20px;
+	padding-top: 15px;
+	color: rgba(154, 197, 199, 0.918);
+}
+
+.text-center a{
+	padding: 10px;
+	text-align: center;
+	color: rgb(206, 116, 43);
+}

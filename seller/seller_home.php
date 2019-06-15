@@ -66,6 +66,7 @@ if ($result && $result->num_rows > 0) {
            <tbody> ";
 
            while ($data = mysqli_fetch_assoc($result)) {
+            $purchase_id = $data['pid'];
             $buyer_id = $data['buyer_id'];
             $product_id = $data['product_id'];
             $product_qty = $data['product_qty'];
@@ -102,8 +103,8 @@ if ($result && $result->num_rows > 0) {
                <td>$customer_contact</td>
 
                <td>$total_price</td>
-               <td><button disabled='true'>Accept</button></td>
-               <td><button disabled='true'>Decline</button></td>
+               <td><a href='index.php?accept=$purchase_id'>Accept</a></td>
+               <td><a href='index.php?decline=$purchase_id'>Decline</a></td>
                 <td>$status</td>
              </tr> ";
            } ?>
@@ -117,6 +118,34 @@ if ($result && $result->num_rows > 0) {
 
         </div>
       </div>
+
+<?php
+
+  if(isset($_GET['accept'])){
+    $purchase_item_id = $_GET['accept'];
+    $query = "UPDATE purchase SET status='accepted' WHERE pid= '$purchase_item_id' ";
+    $result= mysqli_query($db,$query);
+    if(!$result) die("error" .mysqli_error());
+    else{
+      header('location: index.php');
+    }
+  }
+
+  if(isset($_GET['decline'])){
+    $purchase_item_id = $_GET['decline'];
+    $query = "UPDATE purchase SET status='rejected' WHERE pid='$purchase_item_id' ";
+    $result = mysqli_query($db,$query);
+     if(!$result) die("error" .mysqli_error());
+     else{
+      header('location: index.php');
+     }
+  }
+
+
+?>
+
+
+
     <footer class="container-fluid text-center" style="margin-top: 235px;">
   <p>© 2018 CONNECT</p>
 </footer>

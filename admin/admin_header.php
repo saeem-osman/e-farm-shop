@@ -10,6 +10,7 @@
          <!-- Bootstrap CSS CDN -->
         <link rel="stylesheet" href="../css/bootstrap.min.css">
         <link rel="stylesheet" href="../css/font-awesome.min.css">
+        
         <!-- Our Custom CSS -->
         <link rel="stylesheet" href="../css/style5.css">
     </head>
@@ -78,12 +79,7 @@
                                 <span></span>
                             </button>
                         </div>
-                        <div class="search-container">
-    					<form action="/action_page.php">
-      					<input type="text" placeholder="Search.." name="search">
-      					<!--<button type="submit"><i class="fa fa-search"></i></button> -->
-    					</form>
-  						</div>
+
 
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                             <ul class="nav navbar-nav navbar-right">

@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="../css/bootstrap.css">
   <link rel="stylesheet" type="text/css" href="..css/products.css">
   <link rel="stylesheet" href="../css/css3.css">
+  
 
   <script src="../js/jquery.js"></script>
   <script src="../js/bootstrap.js"></script>
